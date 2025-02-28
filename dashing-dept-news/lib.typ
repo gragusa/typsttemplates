@@ -6,7 +6,8 @@
 #let newsletter(
   // The newsletter's title.
   title: [Newsletter title],
-
+  color: #822433
+  font: Open Sans
   // The edition, displayed at the top of the sidebar.
   edition: none,
 
@@ -36,10 +37,10 @@
   )
 
   // Set the body font.
-  set text(12pt, font: "Barlow")
+  set text(12pt, font: font)
 
   // Configure headings.
-  show heading: set text(font: "Syne")
+  show heading: set text(font: fontheading)
   show heading.where(level: 1): set text(1.1em)
   show heading.where(level: 1): set par(leading: 0.4em)
   show heading.where(level: 1): set block(below: 0.8em)
@@ -65,7 +66,7 @@
     if it.has("caption") {
       show figure.caption: caption => {
         set align(center)
-        set text(font: "Syne")
+        set text(font: headingfont)
         [-- ]
         caption.body
         if caption.numbering != none {
@@ -89,7 +90,7 @@
     row-gutter: 32pt,
 
     // Title.
-    text(font: "Syne", 23pt, weight: 800, upper(title)),
+    text(font: headingfont, 23pt, weight: 800, upper(title)),
 
     // Edition.
     text(fill: white, weight: "medium", 14pt, align(right + bottom, edition)),
@@ -151,7 +152,7 @@
             none, none,
             text(1.4em, align(center, it.body)),
             none, none,
-            v(8pt) + align(right, text(font: "Barlow")[---#it.attribution]),
+            v(8pt) + align(right, text(font: font)[---#it.attribution]),
           )
         })
       }
